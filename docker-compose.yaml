@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+    caliper:
+        container_name: caliper
+        image: hyperledger/caliper:0.4.2
+        command: launch manager --caliper-flow-only-test --caliper-fabric-gateway-enabled
+        environment:
+          - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+          - CALIPER_BIND_SUT=fabric:2.2
+          - CALIPER_BENCHCONFIG=benchmarks/myAssetBenchmark.yaml
+          - CALIPER_NETWORKCONFIG=networks/networkConfig.yaml
+        volumes:
+          - /var/run/:/host/var/run/
+          - ./benchmarks:/hyperledger/caliper/workspace/benchmarks
+          - ./networks:/hyperledger/caliper/workspace/networks
+          - ./workload:/hyperledger/caliper/workspace/workload
+          - ../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp:/hyperledger/caliper/workspace/msp
+          - ../fabric-samples/test-network/organizations/peerOrganizations/org1.example.com/connection-org1.yaml:/hyperledger/caliper/workspace/connection-org1.yaml
+        network_mode: "host"
+
