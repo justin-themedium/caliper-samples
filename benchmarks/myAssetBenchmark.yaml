@@ -2,8 +2,8 @@ test:
     name: basic-contract-benchmark
     description: A test benchmark
     workers:
-      type: local
-      number: 2
+      type: remote
+      number: 3
     rounds:
       - label: readAsset
         description: Read asset benchmark
