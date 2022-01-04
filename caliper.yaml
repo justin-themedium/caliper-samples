@@ -24,7 +24,7 @@ caliper:
                 module: ' [%attribute%] '
                 metadata: ' (%attribute%)'
             colorize:
-                all: true
+                all: false
                 colors:
                     info: green
                     error: red
