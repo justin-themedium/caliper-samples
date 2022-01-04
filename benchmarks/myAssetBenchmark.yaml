@@ -3,15 +3,18 @@ test:
     description: A test benchmark
     workers:
       type: local
-      number: 2
+      number: 4
     rounds:
       - label: readAsset
         description: Read asset benchmark
         txDuration: 60
         rateControl:
-          type: fixed-load
+          type: maximum-rate
           opts:
-            transactionLoad: 5
+            tps: 15000
+            step: 1000
+            sampleInterval: 5
+            includeFailed: false
         workload:
           module: workload/readAsset.js
           arguments:
