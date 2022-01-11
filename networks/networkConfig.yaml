@@ -8,6 +8,7 @@ channels:
   - channelName: mychannel
     contracts:
     - id: basic
+    - id: fixed-asset
 
 organizations:
   - mspid: Org1MSP

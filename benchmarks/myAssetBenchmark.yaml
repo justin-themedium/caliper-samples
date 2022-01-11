@@ -20,4 +20,17 @@ test:
           arguments:
             assets: 10
             contractId: basic
+      - label: fixed-asset-create-asset-10000tps
+        txDuration: 60
+        rateControl:
+          type: maximum-rate
+          opts:
+            tps: 5000
+            step: 1000
+            sampleInterval: 5
+            includeFailed: false
+        workload:
+          module: workload/create-asset.js
+          arguments:
+            contractId: fixed-asset
 
